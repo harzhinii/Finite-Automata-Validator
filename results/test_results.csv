@@ -1,0 +1,173 @@
+﻿ID,Group,Category,Input,Expected,Automaton,Reference,Checks,Passed,Failed,Result,Note
+1,PIN validator,Report case,4821,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+2,PIN validator,Report case,0000,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+3,PIN validator,Report case,9375,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+4,PIN validator,Report case,1234,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+5,PIN validator,Report case,0042,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+6,PIN validator,Report case,482,REJECT,REJECT,REJECT,1,1,0,PASS,Only 3 digit(s) were read; exactly four are required.
+7,PIN validator,Report case,48211,REJECT,REJECT,REJECT,1,1,0,PASS,"A fifth digit (character #5) was read, so the DFA entered the trap state qD."
+8,PIN validator,Report case,48a1,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #3 is not a digit, so the DFA entered the trap state qD."
+9,PIN validator,Report case,12␠34,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #3 is not a digit, so the DFA entered the trap state qD."
+10,PIN validator,Report case,ε (empty),REJECT,REJECT,REJECT,1,1,0,PASS,The input is empty: the DFA stays in q0 (no digits read).
+11,PIN validator,Report case,-123,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+12,PIN validator,Boundary,9999,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+13,PIN validator,Boundary,0001,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+14,PIN validator,Boundary,1000,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,Exactly four digits were read.
+15,PIN validator,Boundary,1,REJECT,REJECT,REJECT,1,1,0,PASS,Only 1 digit(s) were read; exactly four are required.
+16,PIN validator,Boundary,12,REJECT,REJECT,REJECT,1,1,0,PASS,Only 2 digit(s) were read; exactly four are required.
+17,PIN validator,Boundary,123,REJECT,REJECT,REJECT,1,1,0,PASS,Only 3 digit(s) were read; exactly four are required.
+18,PIN validator,Boundary,12345,REJECT,REJECT,REJECT,1,1,0,PASS,"A fifth digit (character #5) was read, so the DFA entered the trap state qD."
+19,PIN validator,Boundary,12345678,REJECT,REJECT,REJECT,1,1,0,PASS,"A fifth digit (character #5) was read, so the DFA entered the trap state qD."
+20,PIN validator,Boundary,␠1234,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+21,PIN validator,Boundary,1234␠,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #5 is not a digit, so the DFA entered the trap state qD."
+22,PIN validator,Boundary,12.4,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #3 is not a digit, so the DFA entered the trap state qD."
+23,PIN validator,Boundary,+123,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+24,PIN validator,Boundary,12e3,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #3 is not a digit, so the DFA entered the trap state qD."
+25,PIN validator,Boundary,abcd,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+26,PIN validator,Boundary,١٢٣٤,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+27,PIN validator,Boundary,１２３４,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #1 is not a digit, so the DFA entered the trap state qD."
+28,PIN validator,Boundary,1234\n,REJECT,REJECT,REJECT,1,1,0,PASS,"Character #5 is not a digit, so the DFA entered the trap state qD."
+29,PIN validator,State transition,All 12 transitions equal Table 1 of the report,all agree,all agree,,12,12,0,PASS,
+30,PIN validator,Exhaustive,"every string of length 0–6 over 6 characters ['0', '7', 'a', '-', ' ', '٣']",all agree,all agree,,55987,55987,0,PASS,
+31,Card-lock DFA,Report case,ε (no events),USABLE,USABLE,USABLE,1,1,0,PASS,s0
+32,Card-lock DFA,Report case,C,USABLE,USABLE,USABLE,1,1,0,PASS,s0→s0
+33,Card-lock DFA,Report case,"W,C",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s0
+34,Card-lock DFA,Report case,"W,W,C",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s2→s0
+35,Card-lock DFA,Report case,"C,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s0→s1
+36,Card-lock DFA,Report case,W,USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1
+37,Card-lock DFA,Report case,"W,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s2
+38,Card-lock DFA,Report case,"W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→LOCK
+39,Card-lock DFA,Report case,"W,W,W,C",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→LOCK→LOCK
+40,Card-lock DFA,Report case,"W,W,C,W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→s0→s1→s2→LOCK
+41,Card-lock DFA,Report case,"W,W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→LOCK→LOCK
+42,Card-lock DFA,Extra,"C,C,C",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s0→s0→s0
+43,Card-lock DFA,Extra,"W,C,W,C,W,C",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s0→s1→s0→s1→s0
+44,Card-lock DFA,Extra,"W,W,C,W,W,C,W,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s2→s0→s1→s2→s0→s1→s2
+45,Card-lock DFA,Extra,"C,W,W,C,W,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s0→s1→s2→s0→s1→s2
+46,Card-lock DFA,Extra,"W,C,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s1→s0→s1
+47,Card-lock DFA,Extra,"C,C,W",USABLE,USABLE,USABLE,1,1,0,PASS,s0→s0→s0→s1
+48,Card-lock DFA,Extra,"W,W,W,C,C,C",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→LOCK→LOCK→LOCK→LOCK
+49,Card-lock DFA,Extra,"C,W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s0→s1→s2→LOCK
+50,Card-lock DFA,Extra,"W,C,W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s0→s1→s2→LOCK
+51,Card-lock DFA,Extra,"W,W,C,W,W,W,C",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→s0→s1→s2→LOCK→LOCK
+52,Card-lock DFA,Extra,"W,W,W,W,W,W,W,W",LOCKED,LOCKED,LOCKED,1,1,0,PASS,s0→s1→s2→LOCK→LOCK→LOCK→LOCK→LOCK→LOCK
+53,Card-lock DFA,State transition,All 8 transitions equal the rules in the task statement,all agree,all agree,,8,8,0,PASS,
+54,Card-lock DFA,State transition,LOCK ignores C and W; only the external reset unlocks (4 checks),all agree,all agree,,4,4,0,PASS,
+55,Card-lock DFA,Exhaustive,"every event sequence of length 0–12 over {C, W}: final state vs independent rule",all agree,all agree,,8191,8191,0,PASS,
+56,Password validator,Report case,Srm@2026,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,all requirements met
+57,Password validator,Report case,Trichy#Aiml5,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,all requirements met
+58,Password validator,Report case,aB3$efgh,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,all requirements met
+59,Password validator,Report case,P@ssw0rdX,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,all requirements met
+60,Password validator,Report case,srm@2026,REJECT,REJECT,REJECT,1,1,0,PASS,missing: At least one uppercase letter (U)
+61,Password validator,Report case,SRM@2026,REJECT,REJECT,REJECT,1,1,0,PASS,missing: At least one lowercase letter (L)
+62,Password validator,Report case,Srm@Trichy,REJECT,REJECT,REJECT,1,1,0,PASS,missing: At least one digit (D)
+63,Password validator,Report case,Srm20266,REJECT,REJECT,REJECT,1,1,0,PASS,missing: At least one special character (S)
+64,Password validator,Report case,Sr@1,REJECT,REJECT,REJECT,1,1,0,PASS,missing: Length 8–16 characters (currently 4)
+65,Password validator,Report case,Aa1!Aa1!Aa1!Aa1!A,REJECT,REJECT,REJECT,1,1,0,PASS,missing: Length 8–16 characters (currently 17)
+66,Password validator,Boundary,Aa1!Aa1!,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,"exactly 8 characters, all classes"
+67,Password validator,Boundary,Aa1!Aa1!Aa1!Aa1!,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,"exactly 16 characters, all classes"
+68,Password validator,Boundary,Aa1!Aa1,REJECT,REJECT,REJECT,1,1,0,PASS,7 characters
+69,Password validator,Boundary,Srm@␠2026,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,space is class O: it only counts towards the length
+70,Password validator,Boundary,Srm@2026é,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,non-ASCII letter is class O: it only counts towards the length
+71,Password validator,Boundary,␠␠␠␠␠␠␠␠,REJECT,REJECT,REJECT,1,1,0,PASS,eight spaces: length ok but no class satisfied
+72,Password validator,Boundary,ε (empty),REJECT,REJECT,REJECT,1,1,0,PASS,empty password
+73,Password validator,Boundary,ABCDEFGH,REJECT,REJECT,REJECT,1,1,0,PASS,uppercase only
+74,Password validator,Boundary,abcdefgh,REJECT,REJECT,REJECT,1,1,0,PASS,lowercase only
+75,Password validator,Boundary,12345678,REJECT,REJECT,REJECT,1,1,0,PASS,digits only
+76,Password validator,Boundary,!@#$%^&*,REJECT,REJECT,REJECT,1,1,0,PASS,special characters only
+77,Password validator,Boundary,Aa1~Aa1~,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,'~' counts as printable ASCII punctuation
+78,Password validator,Boundary,Aa1_Aa1_,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,'_' counts as printable ASCII punctuation
+79,Password validator,Boundary 7/8/16/17,Ab7!Ab7,REJECT,REJECT,REJECT,1,1,0,PASS,"length 7, all classes present"
+80,Password validator,Boundary 7/8/16/17,b7!b7!b,REJECT,REJECT,REJECT,1,1,0,PASS,"length 7, U missing"
+81,Password validator,Boundary 7/8/16/17,A7!A7!A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 7, L missing"
+82,Password validator,Boundary 7/8/16/17,Ab!Ab!A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 7, D missing"
+83,Password validator,Boundary 7/8/16/17,Ab7Ab7A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 7, S missing"
+84,Password validator,Boundary 7/8/16/17,Ab7!Ab7!,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,"length 8, all classes present"
+85,Password validator,Boundary 7/8/16/17,b7!b7!b7,REJECT,REJECT,REJECT,1,1,0,PASS,"length 8, U missing"
+86,Password validator,Boundary 7/8/16/17,A7!A7!A7,REJECT,REJECT,REJECT,1,1,0,PASS,"length 8, L missing"
+87,Password validator,Boundary 7/8/16/17,Ab!Ab!Ab,REJECT,REJECT,REJECT,1,1,0,PASS,"length 8, D missing"
+88,Password validator,Boundary 7/8/16/17,Ab7Ab7Ab,REJECT,REJECT,REJECT,1,1,0,PASS,"length 8, S missing"
+89,Password validator,Boundary 7/8/16/17,Ab7!Ab7!Ab7!Ab7!,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,"length 16, all classes present"
+90,Password validator,Boundary 7/8/16/17,b7!b7!b7!b7!b7!b,REJECT,REJECT,REJECT,1,1,0,PASS,"length 16, U missing"
+91,Password validator,Boundary 7/8/16/17,A7!A7!A7!A7!A7!A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 16, L missing"
+92,Password validator,Boundary 7/8/16/17,Ab!Ab!Ab!Ab!Ab!A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 16, D missing"
+93,Password validator,Boundary 7/8/16/17,Ab7Ab7Ab7Ab7Ab7A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 16, S missing"
+94,Password validator,Boundary 7/8/16/17,Ab7!Ab7!Ab7!Ab7!A,REJECT,REJECT,REJECT,1,1,0,PASS,"length 17, all classes present"
+95,Password validator,Boundary 7/8/16/17,b7!b7!b7!b7!b7!b7,REJECT,REJECT,REJECT,1,1,0,PASS,"length 17, U missing"
+96,Password validator,Boundary 7/8/16/17,A7!A7!A7!A7!A7!A7,REJECT,REJECT,REJECT,1,1,0,PASS,"length 17, L missing"
+97,Password validator,Boundary 7/8/16/17,Ab!Ab!Ab!Ab!Ab!Ab,REJECT,REJECT,REJECT,1,1,0,PASS,"length 17, D missing"
+98,Password validator,Boundary 7/8/16/17,Ab7Ab7Ab7Ab7Ab7Ab,REJECT,REJECT,REJECT,1,1,0,PASS,"length 17, S missing"
+99,Password validator,Exhaustive,"every class string of length 0–7 over {U,L,D,S,O}: product DFA and minimal DFA vs reference",all agree,all agree,,97656,97656,0,PASS,
+100,Password validator,Random (seed 2026),"20,000 random passwords of length 0–20 (full characters, classified by the DFA front end)",all agree,all agree,,20000,20000,0,PASS,
+101,E-mail validator,Report case,harshini.rk@srmist.edu.in,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+102,E-mail validator,Report case,ra2411026050232@srmist.edu.in,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+103,E-mail validator,Report case,srm_student@gmail.com,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+104,E-mail validator,Report case,a-b.c@my-site.co,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+105,E-mail validator,Report case,x@y.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+106,E-mail validator,Report case,harshini@srmist,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+107,E-mail validator,Report case,.hHarshini@gmail.com,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('.', class .): no transition allows it here."
+108,E-mail validator,Report case,.harshini@gmail.com,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('.', class .): no transition allows it here."
+109,E-mail validator,Report case,harshini..rk@gmail.com,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #10 ('.', class .): no transition allows it here."
+110,E-mail validator,Report case,harshini@-srm.in,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #10 ('-', class -): no transition allows it here."
+111,E-mail validator,Report case,harshini@srm.c0m,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+112,E-mail validator,Report case,harshini@@gmail.com,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #10 ('@', class @): no transition allows it here."
+113,E-mail validator,Boundary,a@b.cc,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+114,E-mail validator,Boundary,a@b.ccc,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+115,E-mail validator,Boundary,a1@b2.co,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+116,E-mail validator,Boundary,a_b@c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+117,E-mail validator,Boundary,a-b@c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+118,E-mail validator,Boundary,a.b@c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+119,E-mail validator,Boundary,a@b-c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+120,E-mail validator,Boundary,a@b--c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+121,E-mail validator,Boundary,a@b.c.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+122,E-mail validator,Boundary,A@B.COM,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+123,E-mail validator,Boundary,1@2.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+124,E-mail validator,Boundary,a@b.cd.ef,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+125,E-mail validator,Boundary,a_b-c.d@e-f.g-h.ij,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+126,E-mail validator,Boundary,a@1.io,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+127,E-mail validator,Boundary,a@b.cd-ef.gh,ACCEPT,ACCEPT,ACCEPT,1,1,0,PASS,At least one NFA path ends in the accepting state q9 (valid TLD of 2+ letters).
+128,E-mail validator,Boundary,a@b.c,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+129,E-mail validator,Boundary,a@b.c1,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+130,E-mail validator,Boundary,a@b.1c,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+131,E-mail validator,Boundary,a@b.12,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+132,E-mail validator,Boundary,.a@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('.', class .): no transition allows it here."
+133,E-mail validator,Boundary,a.@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('@', class @): no transition allows it here."
+134,E-mail validator,Boundary,-a@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('-', class -): no transition allows it here."
+135,E-mail validator,Boundary,a-@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('@', class @): no transition allows it here."
+136,E-mail validator,Boundary,_a@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('_', class _): no transition allows it here."
+137,E-mail validator,Boundary,a__b@c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('_', class _): no transition allows it here."
+138,E-mail validator,Boundary,a._b@c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('_', class _): no transition allows it here."
+139,E-mail validator,Boundary,a..b@c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('.', class .): no transition allows it here."
+140,E-mail validator,Boundary,a@.b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('.', class .): no transition allows it here."
+141,E-mail validator,Boundary,a@b..co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #5 ('.', class .): no transition allows it here."
+142,E-mail validator,Boundary,a@b.co.,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+143,E-mail validator,Boundary,a@b.-co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #5 ('-', class -): no transition allows it here."
+144,E-mail validator,Boundary,a@b-.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #5 ('.', class .): no transition allows it here."
+145,E-mail validator,Boundary,a@-b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('-', class -): no transition allows it here."
+146,E-mail validator,Boundary,a@b.co-,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+147,E-mail validator,Boundary,a@b.c-o,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+148,E-mail validator,Boundary,a@b,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+149,E-mail validator,Boundary,a@,REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+150,E-mail validator,Boundary,@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('@', class @): no transition allows it here."
+151,E-mail validator,Boundary,ε (empty),REJECT,REJECT,REJECT,1,1,0,PASS,"The whole input was read but no active state is accepting (the address is incomplete, e.g. missing '@', domain or a TLD of 2+ letters)."
+152,E-mail validator,Boundary,@,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('@', class @): no transition allows it here."
+153,E-mail validator,Boundary,a@@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('@', class @): no transition allows it here."
+154,E-mail validator,Boundary,a@b@c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #4 ('@', class @): no transition allows it here."
+155,E-mail validator,Boundary,a␠b@c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #2 ('␠', class O): no transition allows it here."
+156,E-mail validator,Boundary,a@b␠c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #4 ('␠', class O): no transition allows it here."
+157,E-mail validator,Boundary,é@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #1 ('é', class O): no transition allows it here."
+158,E-mail validator,Boundary,a@é.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #3 ('é', class O): no transition allows it here."
+159,E-mail validator,Boundary,a@b.cé,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #6 ('é', class O): no transition allows it here."
+160,E-mail validator,Boundary,a@b_c.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #4 ('_', class _): no transition allows it here."
+161,E-mail validator,Boundary,a@b.co_m,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #7 ('_', class _): no transition allows it here."
+162,E-mail validator,Boundary,user+tag@b.co,REJECT,REJECT,REJECT,1,1,0,PASS,"All NFA paths died at character #5 ('+', class O): no transition allows it here."
+163,E-mail validator,Exhaustive,"every string of length 0–6 over ['a', '1', '.', '-', '_', '@', '!']: NFA, subset DFA and minimal DFA vs reference",all agree,all agree,,137257,137257,0,PASS,
+164,E-mail validator,Random (seed 2026),"20,000 random / mutated addresses: NFA, subset DFA and minimal DFA vs reference",all agree,all agree,,20000,20000,0,PASS,
+165,"Construction (NFA→DFA, minimisation)",Equivalence,"E-mail: subset DFA ≡ minimal DFA (product-graph search, all strings)",all agree,all agree,,1,1,0,PASS,
+166,"Construction (NFA→DFA, minimisation)",Equivalence,"Password: product DFA ≡ minimal DFA (product-graph search, all strings)",all agree,all agree,,1,1,0,PASS,
+167,"Construction (NFA→DFA, minimisation)",Minimality,E-mail: minimising the minimal DFA again changes nothing,all agree,all agree,,1,1,0,PASS,
+168,"Construction (NFA→DFA, minimisation)",Minimality,Password: minimising the minimal DFA again changes nothing,all agree,all agree,,1,1,0,PASS,
+169,"Construction (NFA→DFA, minimisation)",Minimality,E-mail: table-filling algorithm finds the same number of classes as partition refinement,all agree,all agree,,1,1,0,PASS,9 vs 9
+170,"Construction (NFA→DFA, minimisation)",Minimality,Password: table-filling algorithm finds the same number of classes as partition refinement,all agree,all agree,,1,1,0,PASS,209 vs 209
+171,"Construction (NFA→DFA, minimisation)",Unreachable states,Naive power set (1024 subsets) minus unreachable = BFS subset DFA,all agree,all agree,,1,1,0,PASS,"1014 unreachable subsets removed, 10 remain"
+172,"Construction (NFA→DFA, minimisation)",ε-closure,"ε-closure({q6}) = {q3, q6, q7} (the dot-guess)",all agree,all agree,,1,1,0,PASS,

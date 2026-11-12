@@ -1,0 +1,6 @@
+﻿Group,Tests run,Passed,Failed,Individual cases,Pass %
+PIN validator,56027,56027,0,28,100.0
+Card-lock DFA,8225,8225,0,22,100.0
+Password validator,117699,117699,0,43,100.0
+E-mail validator,157319,157319,0,62,100.0
+"Construction (NFA→DFA, minimisation)",8,8,0,0,100.0

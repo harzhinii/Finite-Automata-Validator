@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/claude/finite_automata_validator
+configfile: pytest.ini
+testpaths: tests
+plugins: platformdirs-4.13.5, anyio-4.15.1
+collected 215 items
+
+tests/test_automata.py ....................                              [  9%]
+tests/test_email.py .................................................... [ 33%]
+......................                                                   [ 43%]
+tests/test_password.py ................................................. [ 66%]
+.......                                                                  [ 69%]
+tests/test_pin.py ...................................................... [ 94%]
+...........                                                              [100%]
+
+============================= 215 passed in 1.12s ==============================

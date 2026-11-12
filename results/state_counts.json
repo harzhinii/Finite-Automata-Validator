@@ -1,0 +1,130 @@
+{
+  "pin_dfa": {
+    "states": 6,
+    "accepting": [
+      "q4"
+    ],
+    "trap_states": [
+      "qD"
+    ]
+  },
+  "card_lock_dfa": {
+    "states": 4,
+    "accepting_(card_usable)": [
+      "s0",
+      "s1",
+      "s2"
+    ],
+    "trap_states": [
+      "LOCK"
+    ]
+  },
+  "password": {
+    "components": {
+      "Length 8–16": 18,
+      "Has uppercase letter (U)": 2,
+      "Has lowercase letter (L)": 2,
+      "Has digit (D)": 2,
+      "Has special character (S)": 2
+    },
+    "five_components_total": 26,
+    "product_cartesian_size": 288,
+    "product_reachable": 256,
+    "product_minimal": 209,
+    "minimisation_rounds_block_counts": [
+      2,
+      8,
+      24,
+      50,
+      81,
+      112,
+      139,
+      160,
+      177,
+      192,
+      203,
+      208,
+      209
+    ],
+    "merged_blocks": 1,
+    "design_table": [
+      {
+        "Design": "Five component DFAs side by side",
+        "States": 26,
+        "Comment": "18 + 2 + 2 + 2 + 2 states; one rule = one machine, easy to change"
+      },
+      {
+        "Design": "Product DFA (reachable part)",
+        "States": 256,
+        "Comment": "256 of 288 possible tuples are reachable; the single machine the theory promises"
+      },
+      {
+        "Design": "Product DFA after minimisation",
+        "States": 209,
+        "Comment": "Equivalent states merged (47 fewer states)"
+      }
+    ]
+  },
+  "email": {
+    "nfa_states": 10,
+    "nfa_epsilon_transitions": 2,
+    "naive_powerset_size": 1024,
+    "unreachable_states_removed_after_bfs_construction": 0,
+    "subset_dfa_states_including_trap": 10,
+    "subset_dfa_states_excluding_trap": 9,
+    "minimal_dfa_states_including_trap": 9,
+    "minimal_dfa_states_excluding_trap": 8,
+    "minimisation_rounds_block_counts": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "merged_groups": [
+      {
+        "minimal_state": "M0",
+        "merged_subset_dfa_states": [
+          "S0",
+          "S2"
+        ]
+      }
+    ],
+    "subset_state_names": {
+      "S0": [
+        "q0"
+      ],
+      "S1": [
+        "q1"
+      ],
+      "∅": [],
+      "S2": [
+        "q2"
+      ],
+      "S3": [
+        "q3"
+      ],
+      "S4": [
+        "q4"
+      ],
+      "S5": [
+        "q3",
+        "q6",
+        "q7"
+      ],
+      "S6": [
+        "q5"
+      ],
+      "S7": [
+        "q4",
+        "q8"
+      ],
+      "S8": [
+        "q4",
+        "q9"
+      ]
+    }
+  }
+}
